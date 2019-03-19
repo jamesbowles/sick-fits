@@ -1,10 +1,14 @@
 const mutations = {
-  createDog(parent, args, ctx, info) {
-    global.dogs = global.dogs || [];
-    const newDog = { name: args.name };
+  async createItem(parent, args, ctx, info) {
+    //TODO - check if logged in
+    const item = await ctx.db.mutation.createItem(
+      {
+        data: { ...args }
+      },
+      info
+    );
 
-    global.dogs.push(newDog);
-    return newDog;
+    return item;
   }
 };
 
