@@ -9,7 +9,9 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
+    // this exposes the query to the user
     pageProps.query = ctx.query;
+    console.log(ctx.query);
     return { pageProps };
   }
   render() {
@@ -18,8 +20,7 @@ class MyApp extends App {
       <Container>
         <ApolloProvider client={apollo}>
           <Page>
-            <Component />
-            <p>Hey, I'm on the page</p>
+            <Component {...pageProps} />
           </Page>
         </ApolloProvider>
       </Container>
