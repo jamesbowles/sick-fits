@@ -29,14 +29,13 @@ const ItemsList = styled.div`
   margin: 0 auto;
 `;
 
-export default class Items extends Component {
+class Items extends Component {
   render() {
     return (
       <div>
         <p>Items</p>
         <Query query={ALL_ITEMS_QUERY}>
           {({ data, error, loading }) => {
-            console.log(data);
             return (
               <ItemsList>
                 {data.items.map(item => (
@@ -50,3 +49,6 @@ export default class Items extends Component {
     );
   }
 }
+
+export default Items;
+export { ALL_ITEMS_QUERY };
